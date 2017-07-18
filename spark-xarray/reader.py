@@ -4,8 +4,8 @@ import pandas as pd
 import xarray as xr
 #from pyspark.sql import SparkSession
 
-a = xr.open_dataset('../sample-data/air.sig995.2012.nc')
-print(a)
+a = xr.open_dataset('air.sig995.2012.nc')
+print(a.s)
 
 
 
