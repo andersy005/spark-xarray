@@ -31,4 +31,4 @@ script:
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
-Contact GitHub API Training Shop Blog About
+
