@@ -48,8 +48,8 @@ install:
   - pip install codecov
 
 script:
-  - python spark-xarray/tests/spark.py
-  - coverage run spark-xarray/tests/spark.py
+  - python sparkxarray/tests/spark.py
+  - coverage run sparkxarray/tests/spark.py
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
