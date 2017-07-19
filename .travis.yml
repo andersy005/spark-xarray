@@ -45,10 +45,13 @@ install:
   - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION --file requirements.txt
   - source activate test-environment
   - conda install -c conda-forge pyspark=2.1.1
+  - pip install codecov
 
 script:
   - python spark-xarray/tests/spark.py
+  - coverage run spark-xarray/tests/spark.py
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
+  - codecov
 
