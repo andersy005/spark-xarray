@@ -1,6 +1,6 @@
 notifications:
   email: false
-  
+
 sudo: required
 
 dist: trusty
@@ -47,7 +47,7 @@ install:
   - conda install -c conda-forge pyspark=2.1.1
 
 script:
-  - python spark-xarray/reader.py
+  - python spark-xarray/tests/spark.py
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
