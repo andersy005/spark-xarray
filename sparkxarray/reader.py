@@ -99,21 +99,28 @@ def read_nc_multi_series(sc, file_list, partitions):
 if __name__ == '__main__':
     spark = SparkSession.builder.appName('hi').getOrCreate()
     sc = spark.sparkContext
-    """
-    filename = '../sample-data/air.sig995.2012.nc'
+    
+    import os
+    print(os.getcwd())
+    filename = 'sample-data/air.sig995.2012.nc'
 
     rdd = ncread(sc, filename, mode='single', partition_on='grid')
     print(rdd.count())
     print(rdd.first())
     print(rdd.getNumPartitions())
+    print(('################'))
+    rdd1 = ncread(sc, filename, mode='single', partition_on='time')
+    print(rdd1.count())
+    print(rdd1.first())
+    print(rdd1.getNumPartitions())
+    
     """
-
     filepath = '/Users/abanihi/Documents/netCDF-datasets/NCEP-OI/*.nc'
     #rdd = ncread(sc, filepath, mode='multi', partition_on='time')
     rdd = nc_multi_read(sc, filepath, data_splitting_mode='slice')
     print(rdd.count())
     print(type(rdd.first()))
-
+    """
 
 
 
