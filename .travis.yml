@@ -37,7 +37,7 @@ install:
 
 script:
   - coverage run sparkxarray/tests/spark.py
-  - coverage run sparkxarray/sparkxarray/reader.py
+  - coverage run sparkxarray/reader.py
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
