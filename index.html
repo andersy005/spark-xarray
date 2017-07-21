@@ -259,6 +259,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#getting-started" title="Getting Started" class="md-nav__link">
+    Getting Started
+  </a>
+  
+</li>
+      
       
       
     </ul>
@@ -335,6 +342,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#getting-started" title="Getting Started" class="md-nav__link">
+    Getting Started
+  </a>
+  
+</li>
+      
       
       
     </ul>
@@ -355,10 +369,10 @@
                 <p><a href="https://travis-ci.org/andersy005/spark-xarray"><img alt="Build Status" src="https://travis-ci.org/andersy005/spark-xarray.svg?branch=master" /></a>
 <a href="https://codecov.io/gh/andersy005/spark-xarray"><img alt="codecov" src="https://codecov.io/gh/andersy005/spark-xarray/branch/master/graph/badge.svg" /></a></p>
 <h1 id="spark-xarray">spark-xarray<a class="headerlink" href="#spark-xarray" title="Permanent link">&para;</a></h1>
-<p>This is an experiment to integrate PySpark and xarray for Climate Data Analysis</p>
+<p>This is an experimental project that seeks to integrate PySpark and xarray for Climate Data Analysis.</p>
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
-<p>spark-xarray is a highly level library for parsing netCDF data with Apache Spark and xarray Python package.</p>
-<p>It was conceived during the Summer 0f 2017 as part of <a href="https://ncar.github.io/PySpark4Climate/">PySpark for "Big" Atmospheric &amp; Oceanic Data Analysis</a> - <a href="https://www2.cisl.ucar.edu/siparcs">A CISL/SIParCS Research Project</a>.</p>
+<p>Spark-xarray is a high level, Apache Spark, xarray-based Python library for working with netCDF climate model data with Apache Spark. It is designed to work mainly with big climate datasets, such as global weather data over several years at spatial resolutions down to e.g. 0.1 x 0.1 degree resolution.</p>
+<p>Spark-xarray was originally conceived during the Summer of 2017 as part of <a href="https://ncar.github.io/PySpark4Climate/">PySpark for "Big" Atmospheric &amp; Oceanic Data Analysis</a> - <a href="https://www2.cisl.ucar.edu/siparcs">A CISL/SIParCS Research Project</a>.</p>
 <h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
 <p>We will guide you how to install spark-xarray. However, we will assume that an Apache Spark installation is available.</p>
 <h3 id="git-pip">git &amp; pip<a class="headerlink" href="#git-pip" title="Permanent link">&para;</a></h3>
@@ -375,6 +389,8 @@ pip install -e .
 <span class="nb">export</span> <span class="nv">SPARK_HOME</span><span class="o">=</span>/usr/lib/spark
 <span class="nb">export</span> <span class="nv">PYTHONPATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$SPARK_HOME</span><span class="s2">/python/:</span><span class="nv">$SPARK_HOME</span><span class="s2">/python/lib/py4j-0.10-src.zip:</span><span class="nv">$PYTHONPATH</span><span class="s2">&quot;</span>
 </pre></div>
+
+<h2 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
                 
                   
                 
