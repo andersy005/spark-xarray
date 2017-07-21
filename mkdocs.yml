@@ -1,11 +1,9 @@
 site_name: spark-xarray
 theme: material
-#repo_url: https://github.com/NCAR/PySpark4Climate
-#site_url: https://ncar.github.io/PySpark4Climate/
-#site_favicon: 'images/favicon.ico'
+repo_url: https://github.com/andersy005/spark-xarray
+site_url: https://andersy005.github.io/spark-xarray/
 
 pages:
-
 - Home: index.md
 
 markdown_extensions:
@@ -28,9 +26,7 @@ markdown_extensions:
 extra:
   palette:
     primary: blue
-    accent: green
-
-  #logo: 'images/NCAR_50.png'
+    accent: blue
 
   font:
     text: Roboto
