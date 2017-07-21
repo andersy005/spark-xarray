@@ -2,13 +2,13 @@
 [![codecov](https://codecov.io/gh/andersy005/spark-xarray/branch/master/graph/badge.svg)](https://codecov.io/gh/andersy005/spark-xarray)
 
 # spark-xarray
-This is an experiment to integrate PySpark and xarray for Climate Data Analysis
+This is an experimental project that seeks to integrate PySpark and xarray for Climate Data Analysis.
 
 
 ## Overview
-spark-xarray is a highly level library for parsing netCDF data with Apache Spark and xarray Python package.
+Spark-xarray is a high level, Apache Spark, xarray-based Python library for working with netCDF climate model data with Apache Spark. It is designed to work mainly with big climate datasets, such as global weather data over several years at spatial resolutions down to e.g. 0.1 x 0.1 degree resolution.
 
-It was conceived during the Summer 0f 2017 as part of [PySpark for "Big" Atmospheric & Oceanic Data Analysis](https://ncar.github.io/PySpark4Climate/) - [A CISL/SIParCS Research Project](https://www2.cisl.ucar.edu/siparcs).
+Spark-xarray was originally conceived during the Summer of 2017 as part of [PySpark for "Big" Atmospheric & Oceanic Data Analysis](https://ncar.github.io/PySpark4Climate/) - [A CISL/SIParCS Research Project](https://www2.cisl.ucar.edu/siparcs).
 
 ## Installation
 
@@ -36,3 +36,5 @@ Make sure the following variables are set in your `.bashrc` or ```.bash_profile`
 export SPARK_HOME=/usr/lib/spark
 export PYTHONPATH="$SPARK_HOME/python/:$SPARK_HOME/python/lib/py4j-0.10-src.zip:$PYTHONPATH"
 ```
+
+## Getting Started
