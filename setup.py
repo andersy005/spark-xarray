@@ -21,6 +21,6 @@ setup(name='spark-xarray',
       url='https://github.com/andersy005/spark-xarray',
       install_requires=['xarray'],
       packages=['sparkxarray'],
-      keywords=['xarray', 'Apache Spark', '']
+      keywords=['xarray', 'Apache Spark', 'Distributed'],
       
 )
