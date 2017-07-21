@@ -1,0 +1,39 @@
+{
+    "docs": [
+        {
+            "location": "/", 
+            "text": "spark-xarray\n\n\nThis is an experiment to integrate PySpark and xarray for Climate Data Analysis\n\n\nOverview\n\n\nspark-xarray is a highly level library for parsing netCDF data with Apache Spark and xarray Python package.\n\n\nIt was conceived during the Summer 0f 2017 as part of \nPySpark for \"Big\" Atmospheric \n Oceanic Data Analysis\n - \nA CISL/SIParCS Research Project\n.\n\n\nInstallation\n\n\nWe will guide you how to install spark-xarray. However, we will assume that an Apache Spark installation is available.\n\n\ngit \n pip\n\n\nClone the repository directly from GitHub and install it aftwards using \npip\n. This will also resolve possible missing dependencies.\n\n\ngit clone https://github.com/andersy005/spark-xarray.git\ncd spark-xarray\npip install -e .\n\n\n\n\nGeneral notes\n\n\n.bashrc on Linux or .bash_profile on MAC\n\n\nMake sure the following variables are set in your \n.bashrc\n or \n.bash_profile\n. It is possible, depending on your system configuration, that the following configuration \ndoesn't have to be applied\n.\n\n\n# Example of a .bashrc configuration.\n\n\nexport\n \nSPARK_HOME\n=\n/usr/lib/spark\n\nexport\n \nPYTHONPATH\n=\n$SPARK_HOME\n/python/:\n$SPARK_HOME\n/python/lib/py4j-0.10-src.zip:\n$PYTHONPATH", 
+            "title": "Home"
+        }, 
+        {
+            "location": "/#spark-xarray", 
+            "text": "This is an experiment to integrate PySpark and xarray for Climate Data Analysis", 
+            "title": "spark-xarray"
+        }, 
+        {
+            "location": "/#overview", 
+            "text": "spark-xarray is a highly level library for parsing netCDF data with Apache Spark and xarray Python package.  It was conceived during the Summer 0f 2017 as part of  PySpark for \"Big\" Atmospheric   Oceanic Data Analysis  -  A CISL/SIParCS Research Project .", 
+            "title": "Overview"
+        }, 
+        {
+            "location": "/#installation", 
+            "text": "We will guide you how to install spark-xarray. However, we will assume that an Apache Spark installation is available.", 
+            "title": "Installation"
+        }, 
+        {
+            "location": "/#git-pip", 
+            "text": "Clone the repository directly from GitHub and install it aftwards using  pip . This will also resolve possible missing dependencies.  git clone https://github.com/andersy005/spark-xarray.git\ncd spark-xarray\npip install -e .", 
+            "title": "git &amp; pip"
+        }, 
+        {
+            "location": "/#general-notes", 
+            "text": "", 
+            "title": "General notes"
+        }, 
+        {
+            "location": "/#bashrc-on-linux-or-bash_profile-on-mac", 
+            "text": "Make sure the following variables are set in your  .bashrc  or  .bash_profile . It is possible, depending on your system configuration, that the following configuration  doesn't have to be applied .  # Example of a .bashrc configuration.  export   SPARK_HOME = /usr/lib/spark export   PYTHONPATH = $SPARK_HOME /python/: $SPARK_HOME /python/lib/py4j-0.10-src.zip: $PYTHONPATH", 
+            "title": ".bashrc on Linux or .bash_profile on MAC"
+        }
+    ]
+}
