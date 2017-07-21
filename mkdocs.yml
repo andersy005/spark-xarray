@@ -1,0 +1,40 @@
+site_name: spark-xarray
+theme: material
+#repo_url: https://github.com/NCAR/PySpark4Climate
+#site_url: https://ncar.github.io/PySpark4Climate/
+#site_favicon: 'images/favicon.ico'
+
+pages:
+
+- Home: index.md
+
+markdown_extensions:
+  - pymdownx.arithmatex
+  - pymdownx.betterem(smart_enable=all)
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tasklist(custom_checkbox=true)
+  - pymdownx.tilde
+  - codehilite
+  - footnotes
+  - toc(permalink=true)
+
+
+extra:
+  palette:
+    primary: blue
+    accent: green
+
+  #logo: 'images/NCAR_50.png'
+
+  font:
+    text: Roboto
+    code: Roboto Mono
+extra_javascript:
+  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML
+  - 'javascripts/mathjax.js'
