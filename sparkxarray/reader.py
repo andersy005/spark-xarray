@@ -121,6 +121,7 @@ def read_nc_multi_series(sc, file_list, partitions):
     pass
 
 
+'''
 if __name__ == '__main__':
     spark = SparkSession.builder.appName('hi').getOrCreate()
     sc = spark.sparkContext
@@ -130,11 +131,11 @@ if __name__ == '__main__':
     filename = os.path.abspath('data/air.sig995.2012.nc')
     print(filename)
 
-    rdd = ncread(sc, filename, mode='single', partition_on='grid')
-    print(rdd.count())
-    print(rdd.first())
-    print(rdd.getNumPartitions())
-    print(('################'))
+    #rdd = ncread(sc, filename, mode='single', partition_on='grid')
+    #print(rdd.count())
+    #print(rdd.first())
+    #print(rdd.getNumPartitions())
+    #print(('################'))
     rdd1 = ncread(sc, filename, mode='single', partition_on='time')
     print(rdd1.count())
     print(rdd1.first())
@@ -147,8 +148,6 @@ if __name__ == '__main__':
     print(rdd.count())
     print(type(rdd.first()))
     """
-
-
-
+'''
 
 
