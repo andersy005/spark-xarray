@@ -34,9 +34,11 @@ install:
   - source activate test-environment
   - conda install -c conda-forge pyspark=2.2.0
   - pip install codecov
-  - git clone https://github.com/andersy005/spark-xarray.git
-  - cd spark-xarray
-  - pip install -e .
+  # Install the package:
+  - python setup.py install
+  #- git clone https://github.com/andersy005/spark-xarray.git
+  #- cd spark-xarray
+  #- pip install -e .
 
 script:
   - coverage run sparkxarray/tests/spark.py
