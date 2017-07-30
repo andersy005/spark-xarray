@@ -6,7 +6,7 @@ import os
 spark = SparkSession.builder.appName('hi').getOrCreate()
 sc = spark.sparkContext
 print(os.getcwd())
-filename = os.path.abspath('tests/data/air.sig995.2012.nc')
+filename = os.path.abspath('sparkxarray/tests/data/air.sig995.2012.nc')
 print(filename)
 
 #rdd = ncread(sc, filename, mode='single', partition_on='grid')
