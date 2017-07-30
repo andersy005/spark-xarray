@@ -23,7 +23,7 @@
 
 from __future__ import print_function
 from __future__ import absolute_import
-
+import os
 import numpy as np
 import pandas as pd 
 import xarray as xr
@@ -125,9 +125,10 @@ if __name__ == '__main__':
     spark = SparkSession.builder.appName('hi').getOrCreate()
     sc = spark.sparkContext
     
-    import os
+    
     print(os.getcwd())
-    filename = 'data/air.sig995.2012.nc'
+    filename = os.path.abspath('data/air.sig995.2012.nc')
+    print(filename)
 
     rdd = ncread(sc, filename, mode='single', partition_on='grid')
     print(rdd.count())
