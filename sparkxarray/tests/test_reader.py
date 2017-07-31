@@ -20,7 +20,7 @@ print(rdd2.count())
 print(rdd2.first())
 
 
-rdd3 = ncread(sc, filename, mode='single', partition_on=['time', 'lat', 'lon'], partitions=800)
+rdd3 = ncread(sc, filename, mode='single', partition_on=['time', 'lat', 'lon'], partitions=50000)
 print(rdd3.count())
 print(rdd3.first())
 
