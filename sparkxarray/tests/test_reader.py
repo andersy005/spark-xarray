@@ -19,6 +19,7 @@ rdd2 = ncread(sc, filename, mode='single', partition_on=['time'], partitions=80)
 print(rdd2.count())
 print(rdd2.first())
 
+
 rdd3 = ncread(sc, filename, mode='single', partition_on=['time', 'lat', 'lon'], partitions=800)
 print(rdd3.count())
 print(rdd3.first())

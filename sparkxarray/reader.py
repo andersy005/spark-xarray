@@ -111,10 +111,6 @@ def read_nc_single(sc, paths, **kwargs):
     # create a list of dictionaries for  positional indexing
     positional_indices = [dict(zip(partition_on, ij)) for ij in dim_cartesian_product_indices]
 
-    # Change the positional indices into slice objects
-    # positional_slices = [{dim: slice(element[dim], element[dim]+1)} for element in positional_indices for dim in element.keys()]
-
-
     if not partitions:
         partitions = len(dim_cartesian_product_indices) / 50
 
@@ -123,12 +119,12 @@ def read_nc_single(sc, paths, **kwargs):
 
     
     # Create an RDD
-    rdd = sc.parallelize(positional_indices, partitions)
+    rdd = sc.parallelize(positional_indices, partitions).map(lambda x: readone_slice(dset, x))
 
     return rdd
 
 
-def readone_slice(dset, dim_indices):
+def readone_slice(dset, positional_indices):
     """Read a slice from a xarray.Dataset.
 
     Parameters
@@ -136,8 +132,9 @@ def readone_slice(dset, dim_indices):
 
     dset                : file_object
                          xarray.Dataset object
-    dim_indices         : tuple
-                          tuple containing dimension indices
+    positional_indices  : dict
+                          dict containing positional indices for each dimension
+                          e.g. {'lat': 0, 'lon': 0}
 
     Returns
     ---------
@@ -146,8 +143,13 @@ def readone_slice(dset, dim_indices):
 
 
     """
-    
-    chunk = dset.sel(time=timestep)
+    # Change the positional indices into slice objects
+    # e.g {'lat': 0, 'lon': 0} ---> {'lat': slice(0, 1, None),  'lon': slice(0, 1, None)}
+    positional_slices = {dim: slice(positional_indices[dim], positional_indices[dim]+1) 
+                                                         for dim in positional_indices}
+
+    # Read a slice for the given positional_slices
+    chunk = dset[positional_slices]
     return chunk
 
 def read_nc_multi(sc, paths, **kwargs):
