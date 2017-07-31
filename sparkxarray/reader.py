@@ -32,13 +32,141 @@ from glob import glob
 from pyspark.sql import SparkSession
 
 
-def ncread(sc, filename, mode='single', partitions=None, partition_on='time'):
-    if (mode == 'single') and (partition_on == 'time'):
-        return read_nc_single_time(sc, filename, partitions)
-    elif (mode == 'single') and (partition_on == 'grid'):
-        return read_nc_single_grid(sc, filename, partitions)
+def ncread(sc, paths, mode='single', **kwargs):
+    """Calls sparkxarray netcdf read function based on the mode parameter.
+
+    ============ ==============================
+    Mode          Reading Function
+    ------------ ------------------------------
+    single       : read_nc_single
+    multi        : read_nc_multi
+    Anything else: Throw an exception
+    ============= ==============================
+
+    Parameters
+    ----------
+
+    sc       :  sparkContext object
+
+    paths    :  str or sequence
+                Either a string glob in the form "path/to/my/files/*.nc" or an explicit
+                list of files to open
+
+    mode     : str
+               'single' for a single file
+               'multi' for multiple files
+
+    **kwargs : dict
+               partitioning options to be passed on to the actual read function.
+            
+    
+    """
+
+    if 'partitions' not in kwargs:
+        kwargs['partitions'] = None
+
+    if 'partition_on' not in kwargs:
+        kwargs['partition_on'] = ['time']
+
+    error_msg = ("You specified a mode that is not implemented.")
+
+    if (mode == 'single'):
+        return read_nc_single(sc, paths, **kwargs)
+
+    elif (mode == 'multi'):
+        return read_nc_multi(sc, paths, **kwargs)
     else:
-        raise NotImplementedError("You specified a mode that is not implemented.")
+        raise NotImplementedError(error_msg)
+
+        
+def read_nc_single(sc, paths, **kwargs):
+    """ Read a single netCDF file
+
+    Parameters
+    -----------
+    sc       :  sparkContext object
+
+    paths    :  str or sequence
+                Either a string glob in the form "path/to/my/files/*.nc" or an explicit
+                list of files to open
+
+    **kwargs : dict
+               Additional arguments for partitioning 
+
+    """
+    partition_on = kwargs.get('partition_on')
+    partitions = kwargs.get('partitions')
+
+    dset = xr.open_dataset(paths)
+
+    # D = {'dim_1': dim_1_size, 'dim_2': dim_2_size, ...}
+    D ={dset[dimension].name:dset[dimension].size for dimension in partition_on}
+    
+    # dim_sizes = [range(dim_1_size), range(dim_2_size), range(...)]
+    dim_ranges = [range(dim_size) for dim_size in D.values()]
+    
+
+    dim_cartesian_product_indices = [element for element in itertools.product(*dim_ranges)]
+
+    # create a list of dictionaries for  positional indexing
+    positional_indices = [dict(zip(partition_on, ij)) for ij in dim_cartesian_product_indices]
+
+    # Change the positional indices into slice objects
+    # positional_slices = [{dim: slice(element[dim], element[dim]+1)} for element in positional_indices for dim in element.keys()]
+
+
+    if not partitions:
+        partitions = len(dim_cartesian_product_indices) / 50
+
+    if partitions > len(dim_cartesian_product_indices):
+        partitions = len(dim_cartesian_product_indices)
+
+    
+    # Create an RDD
+    rdd = sc.parallelize(positional_indices, partitions)
+
+    return rdd
+
+
+def readone_slice(dset, dim_indices):
+    """Read a slice from a xarray.Dataset.
+
+    Parameters
+    ----------
+
+    dset                : file_object
+                         xarray.Dataset object
+    dim_indices         : tuple
+                          tuple containing dimension indices
+
+    Returns
+    ---------
+    chunk               : xarray.Dataset
+                         a subset of the Xarray Dataset
+
+
+    """
+    
+    chunk = dset.sel(time=timestep)
+    return chunk
+
+def read_nc_multi(sc, paths, **kwargs):
+    """ Read multiple netCDF files
+
+    Parameters
+    -----------
+    sc       :  sparkContext object
+
+    paths    :  str
+                an explicit filename to open
+
+    **kwargs : dict
+               Additional arguments for partitioning 
+
+    """
+    dset = xr.open_mfdataset(paths, autoclose=True)
+
+
 
 def nc_multi_read(sc, file_list, partitions=None, data_splitting_mode='slice'):
     if (data_splitting_mode == 'slice'):
@@ -66,9 +194,7 @@ def read_nc_single_time(sc, filename, partitions):
 
     return rdd 
 
-def readone_timestep(dset, timestep):
-    chunk = dset.sel(time=timestep)
-    return chunk
+
 
 
 def read_nc_single_grid(sc, filename, partitions):

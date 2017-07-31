@@ -42,7 +42,7 @@ install:
 
 script:
   - coverage run sparkxarray/tests/spark.py
-  - coverage run sparkxarray/tests/partitioning.py
+  - coverage run sparkxarray/tests/reader.py
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)

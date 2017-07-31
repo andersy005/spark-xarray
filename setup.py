@@ -49,7 +49,7 @@ def version():
 #      if line.startswith('__version__'):
 #            exec(line)
 
-INSTALL_REQUIRES = (['xarray>=0.9.5'])
+INSTALL_REQUIRES = (['xarray>=0.9.5', 'dask'])
 
 packages = ['sparkxarray', 'sparkxarray.examples', 'sparkxarray.tests']
 
