@@ -30,7 +30,7 @@ def version():
 
 INSTALL_REQUIRES = (['xarray>=0.9.5', 'dask', 'toolz>=0.8.2'])
 
-packages = ['sparkxarray', 'sparkxarray.examples', 'sparkxarray.tests']
+packages = ['sparkxarray', 'sparkxarray.tests']
 
 package_data = {'sparkxarray': ['data/*.nc']}
 
