@@ -2,11 +2,11 @@
 [![codecov](https://codecov.io/gh/andersy005/spark-xarray/branch/master/graph/badge.svg)](https://codecov.io/gh/andersy005/spark-xarray)
 
 # spark-xarray
-This is an experimental project that seeks to integrate PySpark and xarray for Climate Data Analysis.
+This is a project that seeks to integrate PySpark and xarray for Climate Data Analysis.
 
 
 ## Overview
-Spark-xarray is a high level, Apache Spark, xarray-based Python library for working with netCDF climate model data with Apache Spark. It is designed to work mainly with big climate datasets, such as global weather data over several years at spatial resolutions down to e.g. 0.1 x 0.1 degree resolution.
+Spark-xarray is a high level, PySpark, xarray-based Python library for working with netCDF climate model data with Apache Spark. It is designed to work mainly with big climate datasets, such as global weather data over several years at spatial resolutions down to e.g. 0.1 x 0.1 degree resolution.
 
 Spark-xarray was originally conceived during the Summer of 2017 as part of [PySpark for "Big" Atmospheric & Oceanic Data Analysis](https://ncar.github.io/PySpark4Climate/) - [A CISL/SIParCS Research Project](https://www2.cisl.ucar.edu/siparcs).
 
@@ -15,13 +15,13 @@ Spark-xarray was originally conceived during the Summer of 2017 as part of [PySp
 We will guide you how to install spark-xarray. However, we will assume that an Apache Spark installation is available.
 
 
-### git & pip
-Clone the repository directly from GitHub and install it aftwards using ```pip```. This will also resolve possible missing dependencies.
+### Install from source
+Clone the repository directly from GitHub and install it aftwards using ```setup.py```. This will also resolve possible missing dependencies.
 
 ```
 git clone https://github.com/andersy005/spark-xarray.git
 cd spark-xarray
-pip install -e .
+python setup.py install
 ```
 
 
