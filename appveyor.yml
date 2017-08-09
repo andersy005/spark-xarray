@@ -1,0 +1,57 @@
+# CI on Windows via appveyor
+# Adapted (minorly) from xarray's appveyor.yml, which itself
+# was based on Olivier Grisel's python-appveyor-demo
+
+environment:
+
+  matrix:
+    - PYTHON: "C:\\Python27-conda32"
+      PYTHON_VERSION: "2.7"
+      PYTHON_ARCH: "32"
+      CONDA_ENV: "py27"
+
+    - PYTHON: "C:\\Python34-conda64"
+      PYTHON_VERSION: "3.4"
+      PYTHON_ARCH: "64"
+      CONDA_ENV: "py34"
+
+    - PYTHON: "C:\\Python35-conda64"
+      PYTHON_VERSION: "3.5"
+      PYTHON_ARCH: "64"
+      CONDA_ENV: "py35"
+
+    - PYTHON: "C:\\Python36-conda64"
+      PYTHON_VERSION: "3.6"
+      PYTHON_ARCH: "64"
+      CONDA_ENV: "py36"
+
+install:
+  # Install miniconda Python
+  - "powershell ./ci/install_python.ps1"
+
+  # Prepend newly installed Python to the PATH of this build (this cannot be
+  # done from inside the powershell script as it would require to restart
+  # the parent CMD process).
+  - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
+
+  # Check that we have the expected version and architecture for Python
+  - "python --version"
+  - "python -c \"import struct; print(struct.calcsize('P') * 8)\""
+
+  # install xarray and depenencies
+  - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION --file requirements.txt
+  - source activate test-environment
+  - conda install -c conda-forge pyspark=2.2.0
+  - pip install codecov
+  # Install the package:
+  - python setup.py install
+  #- git clone https://github.com/andersy005/spark-xarray.git
+  #- cd spark-xarray
+  #- pip install -e .
+
+script:
+  - coverage run sparkxarray/tests/test_reader.py
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+  - codecov
