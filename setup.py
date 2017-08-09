@@ -1,18 +1,22 @@
 #!/usr/bin/env python
-
-"""Setup-module for spark-xarray.
-
-This software enables working with netCDF climate model data in Apache Spark.
-
-See: 
-https://github.com/andersy005/spark-xarray
-"""
-
-
 from setuptools import setup
 from setuptools import find_packages
 import os
 from ast import parse
+
+LONG_DESCRIPTION = """
+**spark-xarray**: 
+      
+Spark-xarray is a high level, Apache Spark and xarray-based Python library for working 
+with netCDF climate model data with Apache Spark.
+
+ Important links
+------------------
+
+- Official source code repo: https://github.com/andersy005/spark-xarray
+- Issue tracker: https://github.com/andersy005/spark-xarray/issues
+
+"""
 
 NAME = 'spark-xarray'
 
@@ -28,7 +32,15 @@ def version():
 #      if line.startswith('__version__'):
 #            exec(line)
 
-INSTALL_REQUIRES = (['xarray>=0.9.5', 'dask', 'toolz>=0.8.2'])
+INSTALL_REQUIRES = (['numpy >= 1.7',
+                      'scipy >= 0.16',
+                      'pandas >= 0.15.0',
+                      'netCDF4 >= 1.2',
+                      'xarray>=0.9.5', 
+                      'dask >= 0.14',
+                      'distributed >= 1.16.1', 
+                      'toolz>=0.8.2',
+                      'cloudpickle >= 0.2.1'])
 
 packages = ['sparkxarray', 'sparkxarray.tests']
 
@@ -40,14 +52,24 @@ setup(name=NAME,
       maintainer_email='axbanihirwe@gmail.com',
       description='Big Atmospheric & Oceanic Data Analysis with Apache Spark + xarray',
       url='https://github.com/andersy005/spark-xarray',
-      long_description="""
-      Spark-xarray is a high level, Apache Spark and xarray-based Python library for working 
-      with netCDF climate model data with Apache Spark.
-      """,
+      long_description=LONG_DESCRIPTION,
       install_requires=INSTALL_REQUIRES,
       packages=packages,
       package_data=package_data,
-      keywords=['xarray', 'Apache Spark', 'Distributed', 'netCDF', 'Parallel'],
+      keywords=[' Climate Science', 'xarray', 'Apache Spark', 'Distributed', 'netCDF', 'Parallel'],
+      classifiers=[
+        'Development Status :: 1 - Beta',
+        'Intended Audience :: Science/Research',
+        'License :: OSI Approved :: MIT License',
+        'Natural Language :: English',
+        'Operating System :: OS Independent',
+        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
+        'Topic :: Scientific/Engineering :: Atmospheric Science'
+       ],
       zip_safe=False,
       
 )
