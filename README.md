@@ -1,6 +1,7 @@
 
 [![Build Status](https://travis-ci.org/andersy005/spark-xarray.svg?branch=master)](https://travis-ci.org/andersy005/spark-xarray)
 [![codecov](https://codecov.io/gh/andersy005/spark-xarray/branch/master/graph/badge.svg)](https://codecov.io/gh/andersy005/spark-xarray)
+[![Build status](https://ci.appveyor.com/api/projects/status/93dmqmctpjcgnbcs/branch/master?svg=true)](https://ci.appveyor.com/project/andersy005/spark-xarray/branch/master)
 [![License: MIT](https://img.shields.io/badge/License-MIT-red.svg)](https://opensource.org/licenses/MIT) [![PyPI](https://img.shields.io/pypi/pyversions/Django.svg)]()
 
 # spark-xarray
