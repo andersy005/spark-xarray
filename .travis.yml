@@ -31,7 +31,7 @@ install:
   - conda info -a
 
   # Replace dep1 dep2 ... with your dependencies
-  - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION --file requirements.txt
+  - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION --file ./ci/requirements.txt
   - source activate test-environment
   - conda install -c conda-forge pyspark=2.2.0
   - pip install codecov
