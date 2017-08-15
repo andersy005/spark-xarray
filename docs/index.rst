@@ -10,6 +10,8 @@ Welcome to spark-xarray's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   installation
+   usage
 
 
 Indices and tables
