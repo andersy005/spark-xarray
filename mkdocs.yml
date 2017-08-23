@@ -1,5 +1,5 @@
 site_name: spark-xarray
-theme: material
+theme: readthedocs
 repo_url: https://github.com/andersy005/spark-xarray
 site_url: https://andersy005.github.io/spark-xarray/
 
