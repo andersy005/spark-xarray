@@ -4,3 +4,4 @@ pandas
 scipy 
 xarray 
 netcdf4
+pymdown-extensions
