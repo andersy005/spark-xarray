@@ -24,8 +24,7 @@ import pandas as pd
 import xarray as xr
 import itertools
 from glob import glob
-from pyspark.sql import SparkSession
-
+# from pyspark.sql import SparkSession # Removing this line simply makes the library compatible with Spark 1.6.3 !
 
 def ncread(sc, paths, mode='single', **kwargs):
     """Calls sparkxarray netcdf read function based on the mode parameter.
@@ -174,11 +173,10 @@ def read_nc_multi(sc, paths, **kwargs):
     
     # dim_sizes = [range(dim_1_size), range(dim_2_size), range(...)]
     dim_ranges = [range(dim_size) for dim_size in D.values()]
-    
 
     dim_cartesian_product_indices = [element for element in itertools.product(*dim_ranges)]
 
-    # create a list of dictionaries for  positional indexing
+    # create a list of dictionaries for positional indexing
     positional_indices = [dict(zip(partition_on, ij)) for ij in dim_cartesian_product_indices]
 
     if not partitions:
