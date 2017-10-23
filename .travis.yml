@@ -1,18 +1,22 @@
 notifications:
   email: false
 
-sudo: required
+sudo: false
 
-dist: trusty
+#dist: trusty
 
 language: python
-python:
-  - "3.5"
-  - "3.6"
+
+matrix:
+  include:
+  - python: 3.5
+    env: CONDA_ENV=py35
+
+  - python: 3.6
+    env: CONDA_ENV=py36
+
  
-
-
-install:
+before_install:
   - sudo apt-get update
   # We do this conditionally because it saves us some downloading if the
   # version is the same.
@@ -29,15 +33,17 @@ install:
   # Useful for debugging any issues with conda
   - conda info -a
 
-  # Replace dep1 dep2 ... with your dependencies
+
+install:
+
   #- conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION --file ./ci/requirements.txt
-  - conda env create -f ./ci/env_linux.yml
-  - source activate pangeo
+  - conda env create --file ci/requirements-$CONDA_ENV.yml
+  - source activate test_env
   # Install the package:
   #- python setup.py install
-  #- git clone https://github.com/andersy005/spark-xarray.git
-  #- cd spark-xarray
-  #- pip install -e .
+  - git clone https://github.com/andersy005/spark-xarray.git
+  - cd spark-xarray
+  - pip install -e .
 
 script:
   - coverage run sparkxarray/tests/test_reader.py

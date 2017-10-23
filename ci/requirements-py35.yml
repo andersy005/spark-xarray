@@ -1,9 +1,13 @@
-name: pangeo
+name: test_env
 channels:
 - conda-forge
-- defaults
 dependencies:
-- python=3.6
+- python=3.5
+- dask
+- h5py
+- h5netcdf
+- toolz
+- seaborn
 - numpy
 - scipy
 - pandas
@@ -11,8 +15,10 @@ dependencies:
 - xarray
 - matplotlib
 - pyspark
+- pytest
 - pip:
   - coverage
   - coveralls
   - codecov
-  - pytest
+  - pytest-cov
+  - pymdown-extensions
