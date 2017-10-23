@@ -30,7 +30,7 @@ install:
   - "python -c \"import struct; print(struct.calcsize('P') * 8)\""
 
   # install xarray and depenencies
-  - "conda env create -f ./ci/requirements-$CONDA_ENV.yml"
+  - "conda env create -f ./ci/requirements-%CONDA_ENV%.yml"
   - source activate test_env
   # Install the package:
   - python setup.py install
