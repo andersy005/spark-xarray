@@ -37,7 +37,7 @@ before_install:
 install:
 
   #- conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION --file ./ci/requirements.txt
-  - conda env create --file ci/requirements-$CONDA_ENV.yml
+  - conda create --file ci/requirements-$CONDA_ENV.yml
   - source activate test_env
   # Install the package:
   - python setup.py install
