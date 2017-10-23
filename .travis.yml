@@ -1,9 +1,9 @@
 notifications:
   email: false
 
-sudo: false
+sudo: required
 
-#dist: trusty
+dist: trusty
 
 language: python
 
