@@ -31,13 +31,13 @@ install:
 
   # install xarray and depenencies
   - "conda env create -f ./ci/requirements-%CONDA_ENV%.yml"
-  - source activate test_env
+  - "activate test_env"
   # Install the package:
-  - python setup.py install
+  - "python setup.py install"
   #- git clone https://github.com/andersy005/spark-xarray.git
   #- cd spark-xarray
   #- pip install -e .
 
 test_script:
-  - coverage run sparkxarray/tests/test_reader.py
+  - "coverage run sparkxarray/tests/test_reader.py"
 
