@@ -38,6 +38,8 @@ install:
   #- cd spark-xarray
   #- pip install -e .
 
+build: false
+
 test_script:
   - "coverage run sparkxarray/tests/test_reader.py"
 
