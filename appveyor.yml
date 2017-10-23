@@ -30,10 +30,8 @@ install:
   - "python -c \"import struct; print(struct.calcsize('P') * 8)\""
 
   # install xarray and depenencies
-  - conda create -q -n test-environment --file ./ci/requirements.txt
-  - source activate test-environment
-  - conda install -c conda-forge pyspark=2.2.0
-  - pip install codecov
+  - "conda env create --file ./ci/requirements-$CONDA_ENV.yml"
+  - source activate test_env
   # Install the package:
   - python setup.py install
   #- git clone https://github.com/andersy005/spark-xarray.git
