@@ -91,7 +91,7 @@ def _read_nc_single(sc, paths, **kwargs):
     partition_on = kwargs.get('partition_on')
     partitions = kwargs.get('partitions')
 
-    dset = xr.open_dataset(paths)
+    dset = xr.open_dataset(paths, autoclose=True)
 
     # D = {'dim_1': dim_1_size, 'dim_2': dim_2_size, ...}
     D = {dset[dimension].name:dset[dimension].size for dimension in partition_on}
