@@ -38,7 +38,8 @@ INSTALL_REQUIRES = (['numpy >= 1.7',
                       'netCDF4 >= 1.2',
                       'xarray>=0.9.5', 
                       'dask >= 0.14',
-                      'distributed >= 1.16.1', 
+                      'distributed >= 1.16.1',
+                      'geopandas >= 0.3.0', 
                       'toolz>=0.8.2',
                       'cloudpickle >= 0.2.1'])
 
