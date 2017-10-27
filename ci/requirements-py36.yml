@@ -16,6 +16,7 @@ dependencies:
 - matplotlib
 - pyspark
 - pytest
+- geopandas
 - pip:
   - coverage
   - coveralls
