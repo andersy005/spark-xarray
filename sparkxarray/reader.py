@@ -61,6 +61,9 @@ def ncread(sc, paths, mode='single', **kwargs):
 
     if 'partition_on' not in kwargs:
         kwargs['partition_on'] = ['time']
+    
+    if 'decode_times' not in kwargs:
+        kwargs['decode_times'] = True
 
     error_msg = ("You specified a mode that is not implemented.")
 
@@ -90,8 +93,9 @@ def _read_nc_single(sc, paths, **kwargs):
     """
     partition_on = kwargs.get('partition_on')
     partitions = kwargs.get('partitions')
+    decode_times=kwargs.get('decode_times')
 
-    dset = xr.open_dataset(paths, autoclose=True)
+    dset = xr.open_dataset(paths, autoclose=True, decode_times=decode_times)
 
     # D = {'dim_1': dim_1_size, 'dim_2': dim_2_size, ...}
     D = {dset[dimension].name:dset[dimension].size for dimension in partition_on}
@@ -190,4 +194,3 @@ def _read_nc_multi(sc, paths, **kwargs):
     rdd = sc.parallelize(positional_indices, partitions).map(lambda x: readone_slice(dset, x))
 
     return rdd
-
